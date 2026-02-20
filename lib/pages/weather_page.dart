@@ -39,7 +39,15 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-    String lottieAnimation_location = "assets/Weather-partly shower.json";
+    String lottieAnimationLocation = "assets/Weather-partly shower.json";
+
+    if (_weather?.mainCondition.toLowerCase() == "cloulds") {
+      lottieAnimationLocation = "assets/Weather-windy.json";
+    } else if (_weather?.mainCondition.toLowerCase() == "clear") {
+      lottieAnimationLocation = "assets/Weather-sunny.json";
+    } else if (_weather?.mainCondition.toLowerCase() == "stormy") {
+      lottieAnimationLocation = "assets/Weather-storm.json";
+    }
 
     return Scaffold(
       body: Center(
@@ -55,7 +63,7 @@ class _WeatherPageState extends State<WeatherPage> {
               ),
             ),
 
-            Lottie.asset(lottieAnimation_location),
+            Lottie.asset(lottieAnimationLocation),
 
             //!show temperature
             Text(
@@ -64,6 +72,14 @@ class _WeatherPageState extends State<WeatherPage> {
               style: GoogleFonts.jetBrainsMono(
                 fontWeight: FontWeight.bold,
                 fontSize: 45,
+              ),
+            ),
+
+            Text(
+              "Feels Like : ${_weather?.feelsLike.toString()}",
+              style: GoogleFonts.jetBrainsMono(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
               ),
             ),
 

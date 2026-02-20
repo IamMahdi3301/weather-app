@@ -48,4 +48,5 @@ class WeatherService {
 
     return cityName ?? "";
   }
+
 }
