@@ -84,6 +84,14 @@ class _WeatherPageState extends State<WeatherPage> {
             ),
 
             Text(
+              "Humidity : ${_weather?.humidity.toString()}",
+              style: GoogleFonts.jetBrainsMono(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            Text(
               _weather?.mainCondition ?? "loading",
               style: GoogleFonts.jetBrainsMono(
                 fontSize: 35,
